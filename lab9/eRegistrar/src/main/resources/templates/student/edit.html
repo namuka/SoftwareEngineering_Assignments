@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html layout:decorator="shared/homelayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/studentedit.css}" />
+	</th:block>
+	
+	<th:block layout:fragment="content">
+			
+		<h2>Student Info</h2> <br/>
+	
+		<form class="form-horizontal" action="/student" method="POST" th:object="${student}">
+		      <input type="hidden" name="studentId" th:value="${student.studentId}" />
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="firstname">First name:</label>
+		     <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="firstname" name="firstName"  th:field="*{firstName}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="middlename">Middle name:</label>
+		     <label th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="middlename" name="middleName"  th:value="${student.middleName}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="lastname">Last name:</label>
+		     <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="lastname" name="lastName"  th:value="${student.lastName}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="studentnumber">Student number:</label>
+		     <label th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
+									class="validation-message"></label>
+									
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="studentnumber" name="studentNumber"  th:value="${student.studentNumber}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-1" for="cgpa">GPA:</label>
+		     <label th:if="${#fields.hasErrors('cgpa')}" th:errors="*{cgpa}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="cgpa" name="cgpa"  th:value="${student.cgpa}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="enrollmentdate">Enrollment date:</label>
+		     <label th:if="${#fields.hasErrors('enrollmentDate')}" th:errors="*{enrollmentDate}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="enrollmentdate" name="enrollmentDate"  th:value="${student.enrollmentDate}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		   <label class="control-label col-sm-2" for="isinternational">Is international:</label>
+		   <label th:if="${#fields.hasErrors('isInternational')}" th:errors="*{isInternational}"
+									class="validation-message"></label>
+		   <div class="col-sm-10"> 
+		 	<select th:field="*{isInternational}" class="form-contorl selectpicker" id="isinternational" name="isInternational" roleId="isInternational">			
+			    <option th:value="Yes" th:text="Yes"></option>
+			    <option th:value="No" th:text="No"></option>
+			</select>
+			
+			</select>
+       		</div>
+		  </div>
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Submit</button>
+		    </div>
+		  </div>
+		</form>
+		<br/>
+		
+		<a href="/students">Student List</a>
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>
